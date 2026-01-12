@@ -6,7 +6,7 @@ from PIL import Image
 DEFAULT_CITY = "NY"
 
 class RiskMap(Dataset):
-    def __init__(self, root="./data4", **kwargs):
+    def __init__(self, root="./data", **kwargs):
         """
         root: 数据根目录 (包含 NY/LA 子文件夹)
         """
@@ -80,7 +80,7 @@ class RiskMap(Dataset):
         return []
 
 class RiskMapTrain(RiskMap):
-    def __init__(self, root="./data4", **kwargs):
+    def __init__(self, root="./data", **kwargs):
         self.split_name = "train.txt"
         super().__init__(root=root, **kwargs)
 
@@ -92,7 +92,7 @@ class RiskMapTrain(RiskMap):
             return [ln.strip() for ln in f.readlines() if ln.strip()]
 
 class RiskMapValidation(RiskMap):
-    def __init__(self, root="./data4", **kwargs):
+    def __init__(self, root="./data", **kwargs):
         self.split_name = "val.txt"
         super().__init__(root=root, **kwargs)
 
@@ -104,7 +104,7 @@ class RiskMapValidation(RiskMap):
             return [ln.strip() for ln in f.readlines() if ln.strip()]
 
 class RiskMapTest(RiskMap):
-    def __init__(self, root="./data4", **kwargs):
+    def __init__(self, root="./data", **kwargs):
         self.split_name = "test.txt"
         super().__init__(root=root, **kwargs)
 
