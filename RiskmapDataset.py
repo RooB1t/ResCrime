@@ -7,19 +7,14 @@ DEFAULT_CITY = "NY"
 
 class RiskMap(Dataset):
     def __init__(self, root="./data", **kwargs):
-        """
-        root: 数据根目录 (包含 NY/LA 子文件夹)
-        """
         super().__init__()
         self.root = root
 
-        # 固定使用 DEFAULT_CITY
         self.city = DEFAULT_CITY
         ds_base = os.path.join(self.root, self.city, "DataSets")
         if not os.path.exists(ds_base):
-            raise FileNotFoundError(f"DataSets 目录不存在: {ds_base} （请检查 DEFAULT_CITY 是否设置正确并确保目录存在）")
+            raise FileNotFoundError(f"Directory not found: {ds_base}. Please check if DEFAULT_CITY is set correctly and ensure the directory exists.")
 
-        # 读取文件名列表（由子类实现）
         self.filenames = self.getFileNames()
         if not isinstance(self.filenames, (list, tuple)):
             raise ValueError("getFileNames() must return a list of file base names (no extension).")
