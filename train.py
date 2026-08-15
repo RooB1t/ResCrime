@@ -119,6 +119,5 @@ if __name__ == '__main__':
             print("Early stopping triggered")
             break
 
-    # 保存最终模型
     torch.save(diffres_model.state_dict(), "./Result/Output/NY.pth")
     print("Training completed and model saved")
